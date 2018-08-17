@@ -5,6 +5,7 @@ Description...
 [![Build Status](https://travis-ci.org/DigitalState/Records.svg?branch=develop)](https://travis-ci.org/DigitalState/Records)
 [![Coverage Status](https://coveralls.io/repos/github/DigitalState/Records/badge.svg?branch=develop)](https://coveralls.io/github/DigitalState/Records?branch=develop)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DigitalState/Records/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/DigitalState/Records/?branch=develop)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ## Table of Contents
 
