@@ -44,7 +44,7 @@ services:
           - records_php
 
   api:
-    image: digitalstate/records-nginx
+    image: digitalstate/records-api
     build:
       context: ./api
       target: api_platform_nginx
