@@ -18,7 +18,7 @@ final class RecordFixture implements FixtureInterface, OrderedFixtureInterface, 
      */
     public function __construct()
     {
-        $this->path = '/srv/api/config/fixtures/{fixtures}/records.yaml';
+        $this->path = '/srv/api/config/fixtures/{fixtures}/record.yaml';
     }
 
     /**
