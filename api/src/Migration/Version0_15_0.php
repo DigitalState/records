@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Migrations;
+namespace App\Migration;
 
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
@@ -83,6 +83,20 @@ final class Version0_15_0 extends AbstractMigration implements ContainerAwareInt
 
         switch ($this->platform->getName()) {
             case 'postgresql':
+                $this->addSql('CREATE SEQUENCE app_record_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+                $this->addSql('CREATE SEQUENCE app_record_association_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+                $this->addSql('CREATE SEQUENCE app_record_trans_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+                $this->addSql('CREATE TABLE app_record (id INT NOT NULL, uuid UUID NOT NULL, "owner" VARCHAR(255) DEFAULT NULL, owner_uuid UUID DEFAULT NULL, identity VARCHAR(255) DEFAULT NULL, identity_uuid UUID DEFAULT NULL, data JSON NOT NULL, version INT DEFAULT 1 NOT NULL, tenant UUID NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
+                $this->addSql('CREATE UNIQUE INDEX UNIQ_7E37F211D17F50A6 ON app_record (uuid)');
+                $this->addSql('COMMENT ON COLUMN app_record.data IS \'(DC2Type:json_array)\'');
+                $this->addSql('CREATE TABLE app_record_association (id INT NOT NULL, record_id INT DEFAULT NULL, uuid UUID NOT NULL, entity VARCHAR(255) NOT NULL, entity_uuid UUID NOT NULL, "owner" VARCHAR(255) NOT NULL, owner_uuid UUID NOT NULL, version INT DEFAULT 1 NOT NULL, tenant UUID NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
+                $this->addSql('CREATE UNIQUE INDEX UNIQ_57646D0AD17F50A6 ON app_record_association (uuid)');
+                $this->addSql('CREATE INDEX IDX_57646D0A4DFD750C ON app_record_association (record_id)');
+                $this->addSql('CREATE TABLE app_record_trans (id INT NOT NULL, translatable_id INT DEFAULT NULL, title VARCHAR(255) DEFAULT NULL, locale VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
+                $this->addSql('CREATE INDEX IDX_33F4A5602C2AC5D3 ON app_record_trans (translatable_id)');
+                $this->addSql('CREATE UNIQUE INDEX app_record_trans_unique_translation ON app_record_trans (translatable_id, locale)');
+                $this->addSql('ALTER TABLE app_record_association ADD CONSTRAINT FK_57646D0A4DFD750C FOREIGN KEY (record_id) REFERENCES app_record (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+                $this->addSql('ALTER TABLE app_record_trans ADD CONSTRAINT FK_33F4A5602C2AC5D3 FOREIGN KEY (translatable_id) REFERENCES app_record (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
                 break;
 
             default:
@@ -106,6 +120,14 @@ final class Version0_15_0 extends AbstractMigration implements ContainerAwareInt
 
         switch ($this->platform->getName()) {
             case 'postgresql':
+                $this->addSql('ALTER TABLE app_record_association DROP CONSTRAINT FK_57646D0A4DFD750C');
+                $this->addSql('ALTER TABLE app_record_trans DROP CONSTRAINT FK_33F4A5602C2AC5D3');
+                $this->addSql('DROP SEQUENCE app_record_id_seq CASCADE');
+                $this->addSql('DROP SEQUENCE app_record_association_id_seq CASCADE');
+                $this->addSql('DROP SEQUENCE app_record_trans_id_seq CASCADE');
+                $this->addSql('DROP TABLE app_record');
+                $this->addSql('DROP TABLE app_record_association');
+                $this->addSql('DROP TABLE app_record_trans');
                 break;
 
             default:
