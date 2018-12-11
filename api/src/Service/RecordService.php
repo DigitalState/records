@@ -17,7 +17,7 @@ final class RecordService extends EntityService
      * @param \Doctrine\ORM\EntityManager $manager
      * @param string $entity
      */
-    public function __construct(EntityManager $manager, $entity = Record::class)
+    public function __construct(EntityManager $manager, string $entity = Record::class)
     {
         parent::__construct($manager, $entity);
     }

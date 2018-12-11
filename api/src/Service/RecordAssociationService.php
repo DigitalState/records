@@ -17,7 +17,7 @@ final class RecordAssociationService extends EntityService
      * @param \Doctrine\ORM\EntityManager $manager
      * @param string $entity
      */
-    public function __construct(EntityManager $manager, $entity = RecordAssociation::class)
+    public function __construct(EntityManager $manager, string $entity = RecordAssociation::class)
     {
         parent::__construct($manager, $entity);
     }
