@@ -3,7 +3,7 @@
 namespace App\Service;
 
 use App\Entity\RecordAssociation;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Ds\Component\Entity\Service\EntityService;
 
 /**
@@ -14,10 +14,10 @@ final class RecordAssociationService extends EntityService
     /**
      * Constructor
      *
-     * @param \Doctrine\ORM\EntityManager $manager
+     * @param \Doctrine\ORM\EntityManagerInterface $manager
      * @param string $entity
      */
-    public function __construct(EntityManager $manager, string $entity = RecordAssociation::class)
+    public function __construct(EntityManagerInterface $manager, string $entity = RecordAssociation::class)
     {
         parent::__construct($manager, $entity);
     }

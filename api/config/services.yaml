@@ -28,7 +28,7 @@ services:
     arguments:
       - App\Entity\RecordAssociation
 
-  AppBundle\Stat\Record\CountStat:
+  App\Stat\Record\CountStat:
     tags:
       - { name: ds_statistic.stat, alias: record.count }
 
