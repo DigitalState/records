@@ -4,8 +4,8 @@ objects:
     identity: Individual
     identity_uuid: 9ce3bdb9-47e1-43c9-81ee-0dcc2106ba42 # Morgan
     title:
-      en: Animal License
-      fr: Permis animalier
+      en: Animal License Form Submission
+      fr: Formulaire de soumission pour permis animalier
     data:
       type: dog
     tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
@@ -15,8 +15,8 @@ objects:
     identity: Organization
     identity_uuid: a6b3a00b-e732-4aeb-8011-a1e58fc7b5e3 # Acme
     title:
-      en: Animal License
-      fr: Permis animalier
+      en: Animal License Form Submission
+      fr: Formulaire de soumission pour permis animalier
     data:
       type: cat
     tenant: b6ac25fe-3cd6-4100-a054-6bba2fc9ef18 # Tenant 1
@@ -26,8 +26,8 @@ objects:
     identity: Individual
     identity_uuid: e28fabd0-aae5-4f21-bedd-e4d32658484b # Morgan
     title:
-      en: Animal License
-      fr: Permis animalier
+      en: Animal License Form Submission
+      fr: Formulaire de soumission pour permis animalier
     data:
       type: dog
     tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
@@ -37,8 +37,8 @@ objects:
     identity: Organization
     identity_uuid: 123ea2f7-7869-45fc-975a-0392e889b488 # Acme
     title:
-      en: Animal License
-      fr: Permis animalier
+      en: Animal License Form Submission
+      fr: Formulaire de soumission pour permis animalier
     data:
       type: cat
     tenant: 92000deb-b847-4838-915c-b95d2b28e960 # Tenant 2
