@@ -31,7 +31,7 @@ Feature: Deny access to records belonging to other tenants
 
   Scenario: Read a record from an other tenant
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/records/4edcd927-4d30-40b4-9a7c-43cecf20c6bd"
+    And I send a "GET" request to "/records/c70b4afc-01e3-4c2b-9f64-9e4ad27b1f39"
     Then the response status code should be 404
     And the header "Content-Type" should be equal to "application/json"
     And the response should be in JSON
@@ -39,7 +39,7 @@ Feature: Deny access to records belonging to other tenants
   Scenario: Edit a record from an other tenant
     When I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"
-    And I send a "PUT" request to "/records/4edcd927-4d30-40b4-9a7c-43cecf20c6bd" with body:
+    And I send a "PUT" request to "/records/c70b4afc-01e3-4c2b-9f64-9e4ad27b1f39" with body:
     """
     {}
     """
@@ -49,7 +49,7 @@ Feature: Deny access to records belonging to other tenants
 
   Scenario: Delete a record from another tenant
     When I add "Accept" header equal to "application/json"
-    And I send a "DELETE" request to "/records/4edcd927-4d30-40b4-9a7c-43cecf20c6bd"
+    And I send a "DELETE" request to "/records/c70b4afc-01e3-4c2b-9f64-9e4ad27b1f39"
     Then the response status code should be 404
     And the header "Content-Type" should be equal to "application/json"
     And the response should be in JSON
