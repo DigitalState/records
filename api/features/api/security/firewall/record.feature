@@ -1,24 +1,24 @@
-@api @security @firewall @metadata
-Feature: Deny access to non-authenticated users to metadata endpoints
+@api @security @firewall @record
+Feature: Deny access to non-authenticated users to record endpoints
 
-  Scenario: Browse metadata
+  Scenario: Browse records
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/metadata"
+    And I send a "GET" request to "/records"
     Then the response status code should be 401
     And the header "Content-Type" should be equal to "application/json"
     And the response should be in JSON
 
-  Scenario: Read a metadata
+  Scenario: Read a record
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/metadata/4d4354b9-6069-44c3-9eac-c876a5a90e7f"
+    And I send a "GET" request to "/records/88d90364-c6be-4dac-8fa4-7e4d43d08eea"
     Then the response status code should be 401
     And the header "Content-Type" should be equal to "application/json"
     And the response should be in JSON
 
-  Scenario: Add a metadata
+  Scenario: Add a record
     When I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"
-    And I send a "POST" request to "/metadata" with body:
+    And I send a "POST" request to "/records" with body:
     """
     {}
     """
@@ -26,10 +26,10 @@ Feature: Deny access to non-authenticated users to metadata endpoints
     And the header "Content-Type" should be equal to "application/json"
     And the response should be in JSON
 
-  Scenario: Edit a metadata
+  Scenario: Edit a record
     When I add "Accept" header equal to "application/json"
     And I add "Content-Type" header equal to "application/json"
-    And I send a "PUT" request to "/metadata/4d4354b9-6069-44c3-9eac-c876a5a90e7f" with body:
+    And I send a "PUT" request to "/records/88d90364-c6be-4dac-8fa4-7e4d43d08eea" with body:
     """
     {}
     """
@@ -37,9 +37,9 @@ Feature: Deny access to non-authenticated users to metadata endpoints
     And the header "Content-Type" should be equal to "application/json"
     And the response should be in JSON
 
-  Scenario: Delete a metadata
+  Scenario: Delete a record
     When I add "Accept" header equal to "application/json"
-    And I send a "DELETE" request to "/metadata/4d4354b9-6069-44c3-9eac-c876a5a90e7f"
+    And I send a "DELETE" request to "/records/88d90364-c6be-4dac-8fa4-7e4d43d08eea"
     Then the response status code should be 401
     And the header "Content-Type" should be equal to "application/json"
     And the response should be in JSON
