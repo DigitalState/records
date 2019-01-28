@@ -33,7 +33,8 @@ trait Record
                 ->setOwnerUuid($object->owner_uuid)
                 ->setIdentity($object->identity)
                 ->setIdentityUuid($object->identity_uuid)
-                ->setTitle((array)$object->title)
+                ->setTitle((array) $object->title)
+                ->setData((array) $object->data)
                 ->setTenant($object->tenant);
             $manager->persist($record);
             $manager->flush();
