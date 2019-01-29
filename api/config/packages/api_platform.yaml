@@ -37,7 +37,7 @@ services:
   app.filter.record.search_translation:
     parent: ds_translation.doctrine.orm.filter.search
     arguments:
-      - title: partial
+      - title: ipartial
     tags:
       - { name: api_platform.filter, id: app.record.search_translation }
 
